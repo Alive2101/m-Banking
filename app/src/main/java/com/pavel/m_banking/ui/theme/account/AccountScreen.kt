@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +36,7 @@ fun AccountScreen(
 ) {
     val ctx = LocalContext.current
     val gray = Color(0xFF1C1C1E)
+    val info = listOf("Company", "Company2", "Company3", "Company4")
     Column(
         modifier = Modifier
             .background(Color.Black)
@@ -118,130 +121,45 @@ fun AccountScreen(
                 .background(gray, RoundedCornerShape(8.dp))
         ) {
             Column {
-                Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
-                    Text(
-                        text = "OOO \"Company\"",
-                        color = Color.White
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text(
-                        text = "$10.09",
-                        color = Color.White,
-                        modifier = Modifier.padding(end = 16.dp)
-                    )
+                LazyColumn {
+                    items(info) { info ->
+                        Column {
+                            Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
+                                Text(
+                                    text = info,
+                                    color = Color.White
+                                )
+                                Spacer(modifier = Modifier.weight(1f))
+                                Text(
+                                    text = "$10.09",
+                                    color = Color.White,
+                                    modifier = Modifier.padding(end = 16.dp)
+                                )
+                            }
+                            Row(modifier = Modifier.padding(start = 16.dp)) {
+                                Text(
+                                    text = "10.06.2024",
+                                    color = Color.Gray
+                                )
+                            }
+                            Row(modifier = Modifier.padding(start = 16.dp)) {
+                                Text(
+                                    text = "Executed",
+                                    color = Color.Green
+                                )
+                            }
+                            Divider(
+                                modifier = Modifier
+                                    .width(311.dp)
+                                    .padding(start = 30.dp, top = 16.dp),
+                                color = Color(0xFF404040)
+                            )
+                        }
+                    }
                 }
-                Row(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(
-                        text = "01.06.2024",
-                        color = Color.Gray
-                    )
-                }
-                Row(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(
-                        text = "Executed",
-                        color = Color.Green
-                    )
-                }
-                Divider(
-                    modifier = Modifier
-                        .width(311.dp)
-                        .padding(start = 30.dp, top = 16.dp),
-                    color = Color(0xFF404040)
-                )
-                Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
-                    Text(
-                        text = "OOO \"Company2\"",
-                        color = Color.White
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text(
-                        text = "$10.09",
-                        color = Color.White,
-                        modifier = Modifier.padding(end = 16.dp)
-                    )
-                }
-                Row(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(
-                        text = "02.06.2024",
-                        color = Color.Gray
-                    )
-                }
-                Row(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(
-                        text = "Declined",
-                        color = Color.Red
-                    )
-                }
-                Divider(
-                    modifier = Modifier
-                        .width(311.dp)
-                        .padding(start = 30.dp, top = 16.dp),
-                    color = Color(0xFF404040)
-                )
-                Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
-                    Text(
-                        text = "OOO \"Company2\"",
-                        color = Color.White
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text(
-                        text = "$10.09",
-                        color = Color.White,
-                        modifier = Modifier.padding(end = 16.dp)
-                    )
-                }
-                Row(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(
-                        text = "06.06.2024",
-                        color = Color.Gray
-                    )
-                }
-                Row(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(
-                        text = "In progress",
-                        color = Color.Yellow
-                    )
-                }
-                Divider(
-                    modifier = Modifier
-                        .width(311.dp)
-                        .padding(start = 30.dp, top = 16.dp),
-                    color = Color(0xFF404040)
-                )
-                Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
-                    Text(
-                        text = "OOO \"Company\"",
-                        color = Color.White
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text(
-                        text = "$10.09",
-                        color = Color.White,
-                        modifier = Modifier.padding(end = 16.dp)
-                    )
-                }
-                Row(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(
-                        text = "07.06.2024",
-                        color = Color.Gray
-                    )
-                }
-                Row(modifier = Modifier.padding(start = 16.dp)) {
-                    Text(
-                        text = "Executed",
-                        color = Color.Green
-                    )
-                }
-                Divider(
-                    modifier = Modifier
-                        .width(311.dp)
-                        .padding(start = 30.dp, top = 16.dp),
-                    color = Color(0xFF404040)
-                )
             }
         }
     }
-
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomEnd
@@ -255,8 +173,3 @@ fun AccountScreen(
         )
     }
 }
-
-
-
-
-
