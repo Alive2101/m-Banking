@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.pavel.m_banking.ui.account.AccountScreen
 import com.pavel.m_banking.ui.account.AccountViewModel
 import com.pavel.m_banking.ui.newTransaction.TransactionScreen
+import com.pavel.m_banking.ui.newTransaction.TransactionViewModel
 
 const val ACCOUNT_SCREEN = "accountScreen"
 const val TRANSACTION_SCREEN = "transactionScreen"
@@ -21,7 +22,7 @@ fun NavigationGraph(
             AccountScreen(navigationController, viewModel)
         }
         composable(TRANSACTION_SCREEN) {
-            TransactionScreen(navigationController)
+            TransactionScreen(navigationController, viewModel = TransactionViewModel())
         }
     }
 }
