@@ -37,7 +37,12 @@ fun TransactionItem(transaction: Transaction) {
         }
         val text = transaction.status
         val textColor =
-            if (text == TransactionStatus.EXECUTED) Color.Green else Color.Red
+            when (text) {
+                TransactionStatus.EXECUTED -> Color.Green
+                TransactionStatus.IN_PROGRESS -> Color.Yellow
+                else -> Color.Red
+            }
+
         Row(modifier = Modifier.padding(start = 16.dp)) {
             Text(
                 text = text.toString(),
