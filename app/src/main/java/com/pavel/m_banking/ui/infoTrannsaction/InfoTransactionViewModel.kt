@@ -3,7 +3,6 @@ package com.pavel.m_banking.ui.infoTrannsaction
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pavel.m_banking.model.Account
 import com.pavel.m_banking.model.Transaction
 import com.pavel.m_banking.model.TransactionStatus
 

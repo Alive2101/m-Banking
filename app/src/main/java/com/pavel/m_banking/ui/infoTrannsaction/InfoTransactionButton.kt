@@ -18,11 +18,6 @@ import com.pavel.m_banking.navigation.ACCOUNT_SCREEN
 @Composable
 fun InfoTransactionButton(
     navigationController: NavHostController,
-    value: String,
-    number: String,
-    date: String,
-    status: String,
-    amount: String
 ) {
 
     Button(
