@@ -11,13 +11,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.pavel.m_banking.model.Transaction
 import com.pavel.m_banking.ui.account.TransactionItem
 import com.pavel.m_banking.ui.theme.Gray500
 
 @Composable
-fun ShowAllTransaction(navigationController: NavHostController,transaction: List<Transaction>?) {
+fun ShowAllTransaction(navigationController: NavController, transaction: List<Transaction>?) {
     Box(
         modifier = Modifier
             .padding(top = 16.dp, start = 16.dp)
