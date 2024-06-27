@@ -80,11 +80,6 @@ fun InfoTransactionScreen(
 
             InfoTransactionButton(
                 navigationController,
-                appliedIn,
-                number,
-                date,
-                status,
-                amount
             )
         }
     }
