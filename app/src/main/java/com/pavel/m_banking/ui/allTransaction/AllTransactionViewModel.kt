@@ -11,17 +11,33 @@ import kotlinx.coroutines.launch
 class AllTransactionViewModel : ViewModel() {
 
     val transactions = MutableLiveData<List<Transaction>>()
+    private var isFirst = true
 
     private val hardcodedTransactionList = listOf(
-        Transaction("Company1", "50", "01.06.2024", TransactionStatus.DECLINE),
-        Transaction("Company2", "66", "01.06.2024", TransactionStatus.EXECUTED),
-        Transaction("Company3", "70", "01.06.2024", TransactionStatus.DECLINE),
-        Transaction("Company4", "80", "01.06.2024", TransactionStatus.IN_PROGRESS)
+        Transaction("Company1", "50", "1.6.2024", TransactionStatus.DECLINE),
+        Transaction("Company2", "66", "2.6.2024", TransactionStatus.EXECUTED),
+        Transaction("Company3", "70", "3.6.2024", TransactionStatus.DECLINE),
+        Transaction("Company4", "80", "4.6.2024", TransactionStatus.IN_PROGRESS)
     )
 
     fun getAllTransactions() {
         viewModelScope.launch(Dispatchers.IO) {
+            if (isFirst) {
             transactions.postValue(hardcodedTransactionList)
+            }
+            isFirst = false
         }
     }
+
+    fun searchTransactionsByParameter(text1: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val filteredList = hardcodedTransactionList.filter {
+                it.recivingDate.contains(
+                    text1,
+                    ignoreCase = true
+                )
+            }
+            transactions.postValue(filteredList)
+        }
+}
 }

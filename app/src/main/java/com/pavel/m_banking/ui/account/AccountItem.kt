@@ -1,6 +1,5 @@
 package com.pavel.m_banking.ui.account
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,7 +21,6 @@ fun AccountItem(
 ) {
     Column(modifier = Modifier.clickable {
         viewModel.findAccountByName(account.accountName)
-        Log.e("name",account.accountName)
     }) {
         Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
             Text(

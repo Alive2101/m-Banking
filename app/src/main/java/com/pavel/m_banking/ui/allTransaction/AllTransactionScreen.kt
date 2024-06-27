@@ -23,7 +23,7 @@ fun AllTransactionScreen(
             .background(Color.Black)
     ) {
         Row {
-            ShowTitleAllTransaction(navigationController)
+            ShowTitleAllTransaction(navigationController, viewModel)
         }
 
         ShowAllTransaction(navigationController,transactionList.value)
