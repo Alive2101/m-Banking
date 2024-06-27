@@ -11,11 +11,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.pavel.m_banking.model.Transaction
 import com.pavel.m_banking.ui.theme.Gray500
 
 @Composable
-fun ShowTransactions(transaction: List<Transaction>?) {
+fun ShowTransactions(navigationController: NavHostController,transaction: List<Transaction>?) {
     Box(
         modifier = Modifier
             .padding(top = 16.dp, start = 16.dp)
@@ -25,7 +26,7 @@ fun ShowTransactions(transaction: List<Transaction>?) {
     ) {
         LazyColumn {
             items(transaction ?: arrayListOf()) { info ->
-                TransactionItem(info)
+                TransactionItem(navigationController,info)
             }
         }
     }

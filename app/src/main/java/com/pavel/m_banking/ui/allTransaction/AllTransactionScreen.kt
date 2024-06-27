@@ -26,6 +26,6 @@ fun AllTransactionScreen(
             ShowTitleAllTransaction(navigationController)
         }
 
-        ShowAllTransaction(transactionList.value)
+        ShowAllTransaction(navigationController,transactionList.value)
     }
 }
