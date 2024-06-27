@@ -23,8 +23,8 @@ fun AccountScreen(
     ) {
         ShowPageTitle()
         ShowAccountData(accountData.value)
-        ShowTransactionTitle()
-        ShowTransactions(transactionList.value)
+        ShowTransactionTitle(navigationController)
+        ShowTransactions(navigationController, transactionList.value)
     }
 
     ShowNavigation(navigationController)

@@ -1,5 +1,6 @@
 package com.pavel.m_banking.ui.account
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,12 +12,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.pavel.m_banking.model.Transaction
 import com.pavel.m_banking.model.TransactionStatus
+import com.pavel.m_banking.navigation.INFO_TRANSACTION_SCREEN
 
 @Composable
-fun TransactionItem(transaction: Transaction) {
-    Column {
+
+fun TransactionItem(
+    navigationController: NavHostController,
+    transaction: Transaction
+) {
+    Column(modifier = Modifier.clickable {
+        navigationController.navigate("$INFO_TRANSACTION_SCREEN/${transaction.companyName}")
+    }) {
         Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
             Text(
                 text = transaction.companyName,
