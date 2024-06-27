@@ -6,16 +6,16 @@ import androidx.lifecycle.ViewModel
 import com.pavel.m_banking.model.Transaction
 import com.pavel.m_banking.model.TransactionStatus
 
-class InfoTransactionViewModel() : ViewModel() {
+class InfoTransactionViewModel : ViewModel() {
 
     private val _transactions = MutableLiveData<List<Transaction>>()
     val transactionsInfo: LiveData<List<Transaction>> get() = _transactions
 
-    private val hardcodedTransactionList = listOf<Transaction>(
-        Transaction("1", "5", "0", TransactionStatus.DECLINE),
-        Transaction("2", "6", "0", TransactionStatus.EXECUTED),
-        Transaction("3", "7", "0", TransactionStatus.DECLINE),
-        Transaction("4", "8", "0", TransactionStatus.IN_PROGRESS)
+    private val hardcodedTransactionList = listOf(
+        Transaction("Company1", "50", "01.06.2024", TransactionStatus.DECLINE),
+        Transaction("Company2", "66", "01.06.2024", TransactionStatus.EXECUTED),
+        Transaction("Company3", "70", "01.06.2024", TransactionStatus.DECLINE),
+        Transaction("Company4", "80", "01.06.2024", TransactionStatus.IN_PROGRESS)
     )
 
 

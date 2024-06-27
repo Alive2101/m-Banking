@@ -1,5 +1,6 @@
 package com.pavel.m_banking.ui.account
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,50 +13,33 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.pavel.m_banking.model.Transaction
-import com.pavel.m_banking.model.TransactionStatus
-import com.pavel.m_banking.navigation.INFO_TRANSACTION_SCREEN
+import com.pavel.m_banking.model.Account
 
 @Composable
-
-fun TransactionItem(
-    navigationController: NavController,
-    transaction: Transaction
+fun AccountItem(
+    account: Account,
+    viewModel: AccountViewModel
 ) {
     Column(modifier = Modifier.clickable {
-        navigationController.navigate("$INFO_TRANSACTION_SCREEN/${transaction.companyName}")
+        viewModel.findAccountByName(account.accountName)
+        Log.e("name",account.accountName)
     }) {
         Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
             Text(
-                text = transaction.companyName,
+                text = account.accountName,
                 color = Color.White
             )
             Spacer(modifier = Modifier.weight(1f))
             Text(
-                text = transaction.summa,
+                text = account.accountNumber,
                 color = Color.White,
                 modifier = Modifier.padding(end = 16.dp)
             )
         }
         Row(modifier = Modifier.padding(start = 16.dp)) {
             Text(
-                text = transaction.recivingDate,
+                text = account.cardNumber,
                 color = Color.Gray
-            )
-        }
-        val text = transaction.status
-        val textColor =
-            when (text) {
-                TransactionStatus.EXECUTED -> Color.Green
-                TransactionStatus.IN_PROGRESS -> Color.Yellow
-                else -> Color.Red
-            }
-
-        Row(modifier = Modifier.padding(start = 16.dp)) {
-            Text(
-                text = text.toString(),
-                color = textColor
             )
         }
         Divider(

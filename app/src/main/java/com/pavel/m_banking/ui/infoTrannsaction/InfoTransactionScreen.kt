@@ -1,6 +1,5 @@
 package com.pavel.m_banking.ui.infoTrannsaction
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -13,7 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.pavel.m_banking.ui.newTransaction.ShowTransactionsField
 import com.pavel.m_banking.ui.newTransaction.ShowTransactionsNames
 import com.pavel.m_banking.ui.newTransaction.ShowTransactionsTitle
@@ -21,7 +20,7 @@ import com.pavel.m_banking.ui.newTransaction.ShowTransactionsTitle
 @Composable
 fun InfoTransactionScreen(
     id: String,
-    navigationController: NavHostController,
+    navigationController: NavController,
     viewModel: InfoTransactionViewModel
 ) {
     viewModel.filterTransactionsByName(id)
@@ -35,7 +34,6 @@ fun InfoTransactionScreen(
     var amount by remember { mutableStateOf("") }
 
     transactions.value.forEach { transaction ->
-        Log.e("tr", transaction.companyName)
         Column(
             modifier = Modifier
                 .background(Color.Black)
@@ -80,11 +78,6 @@ fun InfoTransactionScreen(
 
             InfoTransactionButton(
                 navigationController,
-                appliedIn,
-                number,
-                date,
-                status,
-                amount
             )
         }
     }

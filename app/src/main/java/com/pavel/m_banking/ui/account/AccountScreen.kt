@@ -16,13 +16,14 @@ fun AccountScreen(
     viewModel.getAccountAndTransactions()
     val transactionList = viewModel.transactions.observeAsState()
     val accountData = viewModel.accountData.observeAsState()
+    val accountList = viewModel.accountList.observeAsState()
 
     Column(
         modifier = Modifier
             .background(Color.Black)
     ) {
         ShowPageTitle()
-        ShowAccountData(accountData.value)
+        ShowAccountData(accountData.value,accountList.value,viewModel)
         ShowTransactionTitle(navigationController)
         ShowTransactions(navigationController, transactionList.value)
     }
