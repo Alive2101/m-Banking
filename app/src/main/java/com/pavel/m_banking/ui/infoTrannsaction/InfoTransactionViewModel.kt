@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pavel.m_banking.model.Transaction
-import com.pavel.m_banking.model.TransactionStatus
 import com.pavel.m_banking.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -18,10 +17,11 @@ class InfoTransactionViewModel @Inject constructor(
     val transactionsInfo: LiveData<List<Transaction>> get() = _transactions
 
     private val hardcodedTransactionList = listOf(
-        Transaction("Company1", "50", "01.06.2024", TransactionStatus.DECLINE),
-        Transaction("Company2", "66", "01.06.2024", TransactionStatus.EXECUTED),
-        Transaction("Company3", "70", "01.06.2024", TransactionStatus.DECLINE),
-        Transaction("Company4", "80", "01.06.2024", TransactionStatus.IN_PROGRESS)
+        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
+        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
+        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
+        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
+        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1")
     )
 
 

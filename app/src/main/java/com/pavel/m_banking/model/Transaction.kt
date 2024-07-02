@@ -1,14 +1,10 @@
 package com.pavel.m_banking.model
 
 data class Transaction (
+    val accountName : String,
     val companyName : String,
-    val summa : String,
-    val recivingDate : String,
-    val status : TransactionStatus
+    val transactionNumber : String,
+    val receivingDate : String,
+    val status : String,
+    val amount : String
 )
-
-enum class TransactionStatus {
-    EXECUTED,
-    DECLINE,
-    IN_PROGRESS
-}

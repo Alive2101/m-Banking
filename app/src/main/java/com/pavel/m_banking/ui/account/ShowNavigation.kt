@@ -13,10 +13,11 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.pavel.m_banking.R
+import com.pavel.m_banking.model.Account
 import com.pavel.m_banking.navigation.TRANSACTION_SCREEN
 
 @Composable
-fun ShowNavigation(navigationController: NavHostController) {
+fun ShowNavigation(navigationController: NavHostController, accountData: Account?) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomEnd
@@ -28,7 +29,7 @@ fun ShowNavigation(navigationController: NavHostController) {
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
                 .clickable {
-                    navigationController.navigate(TRANSACTION_SCREEN)
+                    navigationController.navigate("$TRANSACTION_SCREEN/${accountData?.accountName}")
                 }
         )
     }

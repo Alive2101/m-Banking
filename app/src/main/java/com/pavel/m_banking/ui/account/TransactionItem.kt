@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.pavel.m_banking.model.Transaction
-import com.pavel.m_banking.model.TransactionStatus
 import com.pavel.m_banking.navigation.INFO_TRANSACTION_SCREEN
 
 @Composable
@@ -33,28 +32,23 @@ fun TransactionItem(
             )
             Spacer(modifier = Modifier.weight(1f))
             Text(
-                text = transaction.summa,
+                text = transaction.amount,
                 color = Color.White,
                 modifier = Modifier.padding(end = 16.dp)
             )
         }
         Row(modifier = Modifier.padding(start = 16.dp)) {
             Text(
-                text = transaction.recivingDate,
+                text = transaction.receivingDate,
                 color = Color.Gray
             )
         }
         val text = transaction.status
-        val textColor =
-            when (text) {
-                TransactionStatus.EXECUTED -> Color.Green
-                TransactionStatus.IN_PROGRESS -> Color.Yellow
-                else -> Color.Red
-            }
+        val textColor = Color.White
 
         Row(modifier = Modifier.padding(start = 16.dp)) {
             Text(
-                text = text.toString(),
+                text = text,
                 color = textColor
             )
         }

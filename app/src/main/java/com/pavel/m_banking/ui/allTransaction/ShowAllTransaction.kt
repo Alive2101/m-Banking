@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.pavel.m_banking.model.Transaction
 import com.pavel.m_banking.ui.account.TransactionItem
 import com.pavel.m_banking.ui.theme.Gray500

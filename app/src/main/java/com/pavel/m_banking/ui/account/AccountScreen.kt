@@ -29,5 +29,5 @@ fun AccountScreen(
         ShowTransactions(navigationController, transactionList.value)
     }
 
-    ShowNavigation(navigationController)
+    ShowNavigation(navigationController,accountData.value)
 }
