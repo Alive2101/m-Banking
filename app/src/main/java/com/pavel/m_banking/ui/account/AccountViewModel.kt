@@ -6,10 +6,16 @@ import androidx.lifecycle.viewModelScope
 import com.pavel.m_banking.model.Account
 import com.pavel.m_banking.model.Transaction
 import com.pavel.m_banking.model.TransactionStatus
+import com.pavel.m_banking.repository.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AccountViewModel : ViewModel() {
+@HiltViewModel
+class AccountViewModel @Inject constructor(
+    private val repository: Repository
+) : ViewModel() {
 
     val transactions = MutableLiveData<List<Transaction>>()
     var accountData = MutableLiveData<Account?>()

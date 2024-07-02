@@ -29,11 +29,12 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.pavel.m_banking.R
 import com.pavel.m_banking.ui.allTransaction.AllTransactionViewModel
 
 @Composable
-fun FilterByDateScreen(viewModel: AllTransactionViewModel) {
+fun FilterByDateScreen(viewModel: AllTransactionViewModel = hiltViewModel()) {
 
     var firstField by remember { mutableStateOf("") }
     var secondField by remember { mutableStateOf("") }

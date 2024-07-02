@@ -12,13 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.pavel.m_banking.navigation.ACCOUNT_SCREEN
 
 @Composable
 fun ShowTransactionButton(
     navigationController: NavHostController,
-    viewModel: TransactionViewModel,
+    viewModel: TransactionViewModel = hiltViewModel(),
     value: String,
     number: String,
     date: String,

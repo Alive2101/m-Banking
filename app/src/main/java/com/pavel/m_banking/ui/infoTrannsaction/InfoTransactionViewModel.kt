@@ -5,8 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pavel.m_banking.model.Transaction
 import com.pavel.m_banking.model.TransactionStatus
+import com.pavel.m_banking.repository.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class InfoTransactionViewModel : ViewModel() {
+@HiltViewModel
+class InfoTransactionViewModel @Inject constructor(
+    private val repository: Repository
+) : ViewModel() {
 
     private val _transactions = MutableLiveData<List<Transaction>>()
     val transactionsInfo: LiveData<List<Transaction>> get() = _transactions

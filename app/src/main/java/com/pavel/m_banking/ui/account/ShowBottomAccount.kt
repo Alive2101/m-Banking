@@ -11,13 +11,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.pavel.m_banking.model.Account
 import com.pavel.m_banking.ui.theme.Gray500
 
 @Composable
 fun ShowBottomAccount(
     account: List<Account>?,
-    viewModel: AccountViewModel
+    viewModel: AccountViewModel = hiltViewModel()
 ) {
     Box(
         modifier = Modifier

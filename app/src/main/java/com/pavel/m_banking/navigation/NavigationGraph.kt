@@ -24,17 +24,16 @@ const val INFO_TRANSACTION_SCREEN = "infoTransactionScreen"
 @Composable
 fun NavigationGraph(
     navigationController: NavHostController,
-    viewModel: AccountViewModel
 ) {
     NavHost(navController = navigationController, startDestination = ACCOUNT_SCREEN) {
         composable(ACCOUNT_SCREEN) {
-            AccountScreen(navigationController, viewModel)
+            AccountScreen(navigationController)
         }
         composable(TRANSACTION_SCREEN) {
-            TransactionScreen(navigationController, viewModel = TransactionViewModel())
+            TransactionScreen(navigationController)
         }
         composable(ALL_TRANSACTION_SCREEN) {
-            AllTransactionScreen(navigationController,viewModel = AllTransactionViewModel())
+            AllTransactionScreen(navigationController)
         }
         composable(
             "$INFO_TRANSACTION_SCREEN/{id}", arguments = listOf(navArgument("id")
@@ -44,8 +43,7 @@ fun NavigationGraph(
         ) {
             InfoTransactionScreen(
                 it.arguments?.getString("id", "0") ?: "",
-                navigationController,
-                viewModel = InfoTransactionViewModel()
+                navigationController
             )
         }
     }
