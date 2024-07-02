@@ -66,7 +66,7 @@ fun InfoTransactionScreen(
             ShowTransactionsNames("Transaction status")
 
             ShowTransactionsField(
-                value = transaction.status.toString(),
+                value = transaction.status,
                 onValueChange = { status = it }
             )
 

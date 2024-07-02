@@ -80,17 +80,17 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
 
-    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
-    implementation ("androidx.compose.runtime:runtime-livedata:1.6.1")
-    implementation ("androidx.navigation:navigation-compose:2.5.3")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.3")
-    implementation ("com.google.dagger:hilt-android:2.50")
-    kapt ("com.google.dagger:hilt-compiler:2.50")
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
-    implementation (libs.androidx.room.runtime)
-    annotationProcessor (libs.androidx.room.compiler)
-    kapt (libs.androidx.room.compiler)
-    implementation (libs.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.room.ktx)
 
     implementation(libs.androidx.navigation.compose)
 }

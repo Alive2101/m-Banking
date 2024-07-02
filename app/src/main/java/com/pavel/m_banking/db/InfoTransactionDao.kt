@@ -14,6 +14,6 @@ interface InfoTransactionDao {
     suspend fun getAllItem(): List<InfoTransactionEntity>
 
     @Query("SELECT * FROM InfoTransactionEntity ORDER BY id DESC LIMIT 4")
-    fun getLastFiveTransaction(): List<InfoTransactionEntity>
+    suspend fun getLastFiveTransaction(): List<InfoTransactionEntity>
 
 }
