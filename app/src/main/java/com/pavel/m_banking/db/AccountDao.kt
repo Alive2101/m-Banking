@@ -13,4 +13,8 @@ interface AccountDao {
     @Query("SELECT * FROM AccountEntity")
     suspend fun getAllItem(): List<AccountEntity>
 
+    @Query("SELECT * FROM AccountEntity WHERE accountName = :name")
+    suspend fun findValue(name: String): AccountEntity?
+
+
 }

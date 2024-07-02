@@ -17,11 +17,12 @@ import androidx.navigation.NavHostController
 @Composable
 fun TransactionScreen(
     navigationController: NavHostController,
+    accountName: String,
     viewModel: TransactionViewModel = hiltViewModel()
 ) {
-    var appliedIn by remember { mutableStateOf("") }
-    var number by remember { mutableStateOf("") }
-    var date by remember { mutableStateOf("") }
+    var companyName by remember { mutableStateOf("") }
+    var transactionNumber by remember { mutableStateOf("") }
+    var receivingDate by remember { mutableStateOf("") }
     var status by remember { mutableStateOf("") }
     var amount by remember { mutableStateOf("") }
 
@@ -35,22 +36,22 @@ fun TransactionScreen(
         ShowTransactionsNames("Transaction was applied in")
 
         ShowTransactionsField(
-            value = appliedIn,
-            onValueChange = { appliedIn = it }
+            value = companyName,
+            onValueChange = { companyName = it }
             )
 
         ShowTransactionsNames("Transaction number")
 
         ShowTransactionsField(
-            value = number,
-            onValueChange = { number = it }
+            value = transactionNumber,
+            onValueChange = { transactionNumber = it }
         )
 
         ShowTransactionsNames("Date")
 
         ShowTransactionsField(
-            value = date,
-            onValueChange = { date = it }
+            value = receivingDate,
+            onValueChange = { receivingDate = it }
         )
 
         ShowTransactionsNames("Transaction status")
@@ -69,10 +70,11 @@ fun TransactionScreen(
 
         ShowTransactionButton(
             navigationController,
+            accountName,
             viewModel,
-            appliedIn,
-            number,
-            date,
+            companyName,
+            transactionNumber,
+            receivingDate,
             status,
             amount
         )

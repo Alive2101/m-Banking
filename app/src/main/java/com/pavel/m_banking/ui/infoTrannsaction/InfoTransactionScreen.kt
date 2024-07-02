@@ -52,14 +52,14 @@ fun InfoTransactionScreen(
             ShowTransactionsNames("Transaction number")
 
             ShowTransactionsField(
-                value = transaction.summa,
+                value = transaction.amount,
                 onValueChange = { number = it }
             )
 
             ShowTransactionsNames("Date")
 
             ShowTransactionsField(
-                value = transaction.recivingDate,
+                value = transaction.receivingDate,
                 onValueChange = { date = it }
             )
 

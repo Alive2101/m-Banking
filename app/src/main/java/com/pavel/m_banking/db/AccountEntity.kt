@@ -4,14 +4,18 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "AccountEntity")
+const val ACCOUNT_ENTITY = "AccountEntity"
+const val ACCOUNT_NUMBER = "accountNumber"
+const val CARD_NUMBER = "AccountEntity"
+
+@Entity(tableName = ACCOUNT_ENTITY)
 class AccountEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    @ColumnInfo("accountName")
+    @ColumnInfo(ACCOUNT_NAME)
     val accountName: String,
-    @ColumnInfo("accountNumber")
+    @ColumnInfo(ACCOUNT_NUMBER)
     val accountNumber: String,
-    @ColumnInfo("cardNumber")
+    @ColumnInfo(CARD_NUMBER)
     val cardNumber: String
 )

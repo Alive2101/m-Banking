@@ -35,23 +35,23 @@ object AppModule {
                                 id = 0,
                                 accountNumber = "123456789",
                                 accountName = "My first account",
-                                cardNumber = "123456789"
+                                cardNumber = "**** 12345"
                             )
                         )
                         provideDB(context).getAccountDao().addItem(
                             AccountEntity(
                                 id = 0,
-                                accountNumber = "123456789",
+                                accountNumber = "987654321",
                                 accountName = "For traveling",
-                                cardNumber = "123456789"
+                                cardNumber = "**** 56789"
                             )
                         )
                         provideDB(context).getAccountDao().addItem(
                             AccountEntity(
                                 id = 0,
-                                accountNumber = "123456789",
+                                accountNumber = "741852963",
                                 accountName = "Saving account",
-                                cardNumber = "123456789"
+                                cardNumber = "**** 65489"
                             )
                         )
                     }
