@@ -6,12 +6,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 
 @Composable
 fun AccountScreen(
     navigationController: NavHostController,
-    viewModel: AccountViewModel
+    viewModel: AccountViewModel = hiltViewModel()
 ) {
     viewModel.getAccountAndTransactions()
     val transactionList = viewModel.transactions.observeAsState()

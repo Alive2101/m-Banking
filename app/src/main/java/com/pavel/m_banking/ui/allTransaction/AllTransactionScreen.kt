@@ -7,13 +7,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 
 
 @Composable
 fun AllTransactionScreen(
     navigationController: NavHostController,
-    viewModel: AllTransactionViewModel
+    viewModel: AllTransactionViewModel = hiltViewModel()
 ) {
     viewModel.getAllTransactions()
     val transactionList = viewModel.transactions.observeAsState()

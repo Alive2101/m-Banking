@@ -12,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.pavel.m_banking.ui.newTransaction.ShowTransactionsField
 import com.pavel.m_banking.ui.newTransaction.ShowTransactionsNames
@@ -21,7 +22,7 @@ import com.pavel.m_banking.ui.newTransaction.ShowTransactionsTitle
 fun InfoTransactionScreen(
     id: String,
     navigationController: NavController,
-    viewModel: InfoTransactionViewModel
+    viewModel: InfoTransactionViewModel = hiltViewModel()
 ) {
     viewModel.filterTransactionsByName(id)
 

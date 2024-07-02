@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.pavel.m_banking.R
 import com.pavel.m_banking.navigation.ACCOUNT_SCREEN
@@ -29,7 +30,10 @@ import com.pavel.m_banking.ui.allTransaction.filterByDate.FilterByDateScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ShowTitleAllTransaction(navigationController: NavHostController,viewModel: AllTransactionViewModel) {
+fun ShowTitleAllTransaction(
+    navigationController: NavHostController,
+    viewModel: AllTransactionViewModel = hiltViewModel()
+) {
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
 

@@ -27,13 +27,18 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.pavel.m_banking.R
 import com.pavel.m_banking.model.Account
 import com.pavel.m_banking.ui.theme.Gray500
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ShowAccountData(accountData: Account?, accountList: List<Account>?,viewModel: AccountViewModel) {
+fun ShowAccountData(
+    accountData: Account?,
+    accountList: List<Account>?,
+    viewModel: AccountViewModel = hiltViewModel()
+) {
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
 
