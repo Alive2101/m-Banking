@@ -5,7 +5,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pavel.m_banking.repository.Repository
+import com.pavel.m_banking.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TransactionViewModel @Inject constructor(
-    private val repository: Repository
+    private val transactionRepository: TransactionRepository,
 ) : ViewModel() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun addNewTransactions(
@@ -30,7 +30,7 @@ class TransactionViewModel @Inject constructor(
             val formatter = DateTimeFormatter.ofPattern("d.M.yyyy")
             val formattedDate = currentDate.format(formatter)
 
-            repository.addTransaction(
+            transactionRepository.addTransaction(
                 accountName,
                 companyName,
                 transactionNumber,

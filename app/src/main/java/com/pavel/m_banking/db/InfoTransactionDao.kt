@@ -24,4 +24,12 @@ interface InfoTransactionDao {
         name: String,
     ): List<InfoTransactionEntity>
 
+    @Query("SELECT * FROM InfoTransactionEntity WHERE accountName = :accountName " +
+            "and receivingDate BETWEEN :startDate AND :endDate")
+    suspend fun getTransactionsBetweenDates(
+        startDate: String,
+        endDate: String,
+        accountName:String
+    ): List<InfoTransactionEntity>
 }
+

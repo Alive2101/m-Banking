@@ -1,5 +1,7 @@
 package com.pavel.m_banking.ui.allTransaction
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AllTransactionScreen(
     accountName: String,
@@ -25,7 +28,7 @@ fun AllTransactionScreen(
             .background(Color.Black)
     ) {
         Row {
-            ShowTitleAllTransaction(navigationController, viewModel)
+            ShowTitleAllTransaction(navigationController, viewModel,accountName)
         }
 
         ShowAllTransaction(navigationController,transactionList.value)
