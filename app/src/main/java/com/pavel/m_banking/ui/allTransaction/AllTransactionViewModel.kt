@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pavel.m_banking.model.Transaction
-import com.pavel.m_banking.repository.Repository
+import com.pavel.m_banking.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,34 +12,30 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AllTransactionViewModel @Inject constructor(
-    private val repository: Repository
+    private val transactionRepository: TransactionRepository
 ) : ViewModel() {
 
     val transactions = MutableLiveData<List<Transaction>>()
+    private var isFirst = true
 
-    private val hardcodedTransactionList = listOf(
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1")
-    )
-
-    fun getAllTransactions() {
+    fun getAllTransactions(accountName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            transactions.postValue(repository.getTransactionList())
+            if (isFirst) {
+                transactions.postValue(transactionRepository.getTransactionInfo(accountName))
+                isFirst = false
+            }
         }
     }
 
-    fun searchTransactionsByParameter(text1: String) {
+    fun getTransactionsBetweenDates(startDate: String, endDate: String, accountName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val filteredList = hardcodedTransactionList.filter {
-                it.receivingDate.contains(
-                    text1,
-                    ignoreCase = true
+            transactions.postValue(
+                transactionRepository.getTransactionsBetweenDates(
+                    startDate,
+                    endDate,
+                    accountName
                 )
-            }
-            transactions.postValue(filteredList)
+            )
         }
 }
 }

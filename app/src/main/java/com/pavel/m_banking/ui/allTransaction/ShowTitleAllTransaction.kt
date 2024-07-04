@@ -1,5 +1,7 @@
 package com.pavel.m_banking.ui.allTransaction
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -28,11 +30,13 @@ import com.pavel.m_banking.navigation.ACCOUNT_SCREEN
 import com.pavel.m_banking.ui.allTransaction.filterByDate.FilterByDateScreen
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ShowTitleAllTransaction(
     navigationController: NavHostController,
-    viewModel: AllTransactionViewModel = hiltViewModel()
+    viewModel: AllTransactionViewModel = hiltViewModel(),
+    accountName: String
 ) {
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
@@ -82,7 +86,8 @@ fun ShowTitleAllTransaction(
             sheetState = sheetState,
             containerColor = Color.Black
         ) {
-            FilterByDateScreen(viewModel)
+
+            FilterByDateScreen(viewModel,accountName)
         }
     }
 }

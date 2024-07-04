@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pavel.m_banking.model.Account
 import com.pavel.m_banking.model.Transaction
-import com.pavel.m_banking.repository.Repository
+import com.pavel.m_banking.repository.AccountRepository
+import com.pavel.m_banking.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AccountViewModel @Inject constructor(
-    private val repository: Repository
+    private val accountRepository: AccountRepository,
+    private val transactionRepository: TransactionRepository,
 ) : ViewModel() {
 
     val transactions = MutableLiveData<List<Transaction>>()
@@ -24,9 +26,9 @@ class AccountViewModel @Inject constructor(
     fun getAccountAndTransactions() {
         viewModelScope.launch(Dispatchers.IO) {
             if (isFirst) {
-                transactions.postValue(repository.getLastFiveTransaction())
-                accountData.postValue(repository.getAccountList()[0])
-                accountList.postValue(repository.getAccountList())
+                transactions.postValue(transactionRepository.getTransactionList())
+                accountData.postValue(accountRepository.getAccountList()[0])
+                accountList.postValue(accountRepository.getAccountList())
                 isFirst = false
             }
         }
@@ -34,7 +36,8 @@ class AccountViewModel @Inject constructor(
 
     fun findAccountByName(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            accountData.postValue(repository.getAccountByName(name))
+            accountData.postValue(accountRepository.getAccountByName(name))
+            transactions.postValue(transactionRepository.getLastFiveTransaction(name))
         }
     }
 }

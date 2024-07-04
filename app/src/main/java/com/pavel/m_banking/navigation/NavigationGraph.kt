@@ -1,5 +1,7 @@
 package com.pavel.m_banking.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -17,6 +19,7 @@ const val ALL_TRANSACTION_SCREEN = "allTransactionScreen"
 const val INFO_TRANSACTION_SCREEN = "infoTransactionScreen"
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NavigationGraph(
     navigationController: NavHostController,
@@ -35,8 +38,16 @@ fun NavigationGraph(
                 it.arguments?.getString("accountName", "0") ?: ""
             )
         }
-        composable(ALL_TRANSACTION_SCREEN) {
-            AllTransactionScreen(navigationController)
+        composable(
+            "$ALL_TRANSACTION_SCREEN/{accountName}", arguments = listOf(navArgument("accountName")
+            {
+                type = NavType.StringType
+            })
+        ) {
+            AllTransactionScreen(
+                it.arguments?.getString("accountName", "0") ?: "",
+                navigationController
+            )
         }
         composable(
             "$INFO_TRANSACTION_SCREEN/{id}", arguments = listOf(navArgument("id")

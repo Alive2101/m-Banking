@@ -1,32 +1,25 @@
 package com.pavel.m_banking.ui.infoTrannsaction
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.pavel.m_banking.model.Transaction
-import com.pavel.m_banking.repository.Repository
+import com.pavel.m_banking.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class InfoTransactionViewModel @Inject constructor(
-    private val repository: Repository
+    private val transactionRepository: TransactionRepository
 ) : ViewModel() {
 
-    private val _transactions = MutableLiveData<List<Transaction>>()
-    val transactionsInfo: LiveData<List<Transaction>> get() = _transactions
+    val transactions = MutableLiveData<List<Transaction>>()
 
-    private val hardcodedTransactionList = listOf(
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1"),
-        Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1")
-    )
-
-
-    fun filterTransactionsByName(id: String) {
-        val filteredTransactions = hardcodedTransactionList.filter { it.companyName == id }
-        _transactions.value = filteredTransactions
+    fun filterTransactionsByName(name: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            transactions.postValue(transactionRepository.getTransactionListByName(name))
+        }
     }
 }

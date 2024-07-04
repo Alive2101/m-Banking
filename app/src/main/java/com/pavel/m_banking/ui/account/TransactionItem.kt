@@ -23,7 +23,7 @@ fun TransactionItem(
     transaction: Transaction
 ) {
     Column(modifier = Modifier.clickable {
-        navigationController.navigate("$INFO_TRANSACTION_SCREEN/${transaction.companyName}")
+        navigationController.navigate("$INFO_TRANSACTION_SCREEN/${transaction.transactionNumber}")
     }) {
         Row(modifier = Modifier.padding(top = 16.dp, start = 16.dp)) {
             Text(

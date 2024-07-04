@@ -1,5 +1,7 @@
 package com.pavel.m_banking.ui.newTransaction
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -14,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun TransactionScreen(
     navigationController: NavHostController,
@@ -22,7 +25,6 @@ fun TransactionScreen(
 ) {
     var companyName by remember { mutableStateOf("") }
     var transactionNumber by remember { mutableStateOf("") }
-    var receivingDate by remember { mutableStateOf("") }
     var status by remember { mutableStateOf("") }
     var amount by remember { mutableStateOf("") }
 
@@ -47,13 +49,6 @@ fun TransactionScreen(
             onValueChange = { transactionNumber = it }
         )
 
-        ShowTransactionsNames("Date")
-
-        ShowTransactionsField(
-            value = receivingDate,
-            onValueChange = { receivingDate = it }
-        )
-
         ShowTransactionsNames("Transaction status")
 
         ShowTransactionsField(
@@ -74,7 +69,6 @@ fun TransactionScreen(
             viewModel,
             companyName,
             transactionNumber,
-            receivingDate,
             status,
             amount
         )

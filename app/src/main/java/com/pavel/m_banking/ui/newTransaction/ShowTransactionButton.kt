@@ -1,5 +1,7 @@
 package com.pavel.m_banking.ui.newTransaction
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.pavel.m_banking.navigation.ACCOUNT_SCREEN
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ShowTransactionButton(
     navigationController: NavHostController,
@@ -23,18 +26,23 @@ fun ShowTransactionButton(
     viewModel: TransactionViewModel = hiltViewModel(),
     companyName: String,
     transactionNumber: String,
-    receivingDate: String,
     status: String,
     amount: String
 ) {
     val allFieldsFilled =
         companyName.isNotEmpty() && transactionNumber.isNotEmpty()
-                && receivingDate.isNotEmpty() && status.isNotEmpty() && amount.isNotEmpty()
+                && status.isNotEmpty() && amount.isNotEmpty()
 
     Button(
         onClick = {
             navigationController.navigate(ACCOUNT_SCREEN)
-            viewModel.addNewTransactions(accountName, companyName, transactionNumber, receivingDate, status, amount)
+            viewModel.addNewTransactions(
+                accountName,
+                companyName,
+                transactionNumber,
+                status,
+                amount
+            )
         },
         enabled = allFieldsFilled,
         modifier = Modifier
