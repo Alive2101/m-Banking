@@ -13,10 +13,11 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun AllTransactionScreen(
+    accountName: String,
     navigationController: NavHostController,
     viewModel: AllTransactionViewModel = hiltViewModel()
 ) {
-    viewModel.getAllTransactions()
+    viewModel.getAllTransactions(accountName)
     val transactionList = viewModel.transactions.observeAsState()
 
     Column(

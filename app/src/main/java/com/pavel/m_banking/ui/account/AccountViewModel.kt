@@ -24,7 +24,7 @@ class AccountViewModel @Inject constructor(
     fun getAccountAndTransactions() {
         viewModelScope.launch(Dispatchers.IO) {
             if (isFirst) {
-                transactions.postValue(repository.getLastFiveTransaction())
+                transactions.postValue(repository.getTransactionList())
                 accountData.postValue(repository.getAccountList()[0])
                 accountList.postValue(repository.getAccountList())
                 isFirst = false
@@ -35,6 +35,7 @@ class AccountViewModel @Inject constructor(
     fun findAccountByName(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
             accountData.postValue(repository.getAccountByName(name))
+            transactions.postValue(repository.getLastFiveTransaction(name))
         }
     }
 }

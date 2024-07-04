@@ -20,13 +20,13 @@ import com.pavel.m_banking.ui.newTransaction.ShowTransactionsTitle
 
 @Composable
 fun InfoTransactionScreen(
-    id: String,
+    transactionNumber: String,
     navigationController: NavController,
     viewModel: InfoTransactionViewModel = hiltViewModel()
 ) {
-    viewModel.filterTransactionsByName(id)
+    viewModel.filterTransactionsByName(transactionNumber)
 
-    val transactions = viewModel.transactionsInfo.observeAsState(emptyList())
+    val transactions = viewModel.transactions.observeAsState(emptyList())
 
     var appliedIn by remember { mutableStateOf("") }
     var number by remember { mutableStateOf("") }
@@ -52,7 +52,7 @@ fun InfoTransactionScreen(
             ShowTransactionsNames("Transaction number")
 
             ShowTransactionsField(
-                value = transaction.amount,
+                value = transaction.transactionNumber,
                 onValueChange = { number = it }
             )
 
@@ -73,7 +73,7 @@ fun InfoTransactionScreen(
             ShowTransactionsNames("Amount")
 
             ShowTransactionsField(
-                value = transaction.companyName,
+                value = transaction.amount,
                 onValueChange = { amount = it }
             )
 

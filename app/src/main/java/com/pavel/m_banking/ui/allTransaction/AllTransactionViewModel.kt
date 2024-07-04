@@ -25,9 +25,9 @@ class AllTransactionViewModel @Inject constructor(
         Transaction("1", "1", "1", "1", "TransactionStatus.EXECUTED", "1")
     )
 
-    fun getAllTransactions() {
+    fun getAllTransactions(accountName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            transactions.postValue(repository.getTransactionList())
+            transactions.postValue(repository.getTransactionInfo(accountName))
         }
     }
 

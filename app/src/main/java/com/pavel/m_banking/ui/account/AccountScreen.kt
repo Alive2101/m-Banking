@@ -1,5 +1,7 @@
 package com.pavel.m_banking.ui.account
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
@@ -9,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AccountScreen(
     navigationController: NavHostController,
@@ -24,10 +27,10 @@ fun AccountScreen(
             .background(Color.Black)
     ) {
         ShowPageTitle()
-        ShowAccountData(accountData.value,accountList.value,viewModel)
-        ShowTransactionTitle(navigationController)
+        ShowAccountData(accountData.value, accountList.value, viewModel)
+        ShowTransactionTitle(navigationController, accountData.value)
         ShowTransactions(navigationController, transactionList.value)
     }
 
-    ShowNavigation(navigationController,accountData.value)
+    ShowNavigation(navigationController, accountData.value)
 }

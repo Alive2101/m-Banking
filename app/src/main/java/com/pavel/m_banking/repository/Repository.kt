@@ -25,7 +25,7 @@ class Repository @Inject constructor(
         }
     }
 
-    suspend fun addCity(
+    suspend fun addTransaction(
         accountName: String,
         companyName: String,
         transactionNumber: String,
@@ -57,8 +57,8 @@ class Repository @Inject constructor(
         } as? ArrayList<Transaction>) ?: arrayListOf()
     }
 
-    suspend fun getLastFiveTransaction(): ArrayList<Transaction> {
-        return (infoTransactionDao.getLastFiveTransaction().map {
+    suspend fun getLastFiveTransaction(accountName: String): ArrayList<Transaction> {
+        return (infoTransactionDao.getLastFiveTransactionsByAccountName(accountName).map {
             Transaction(
                 it.accountName,
                 it.companyName,
@@ -70,4 +70,29 @@ class Repository @Inject constructor(
         } as? ArrayList<Transaction>) ?: arrayListOf()
     }
 
+    suspend fun getTransactionListByName(name: String): ArrayList<Transaction> {
+        return (infoTransactionDao.findValue(name).map {
+            Transaction(
+                it.accountName,
+                it.companyName,
+                it.summa,
+                it.receivingDate,
+                it.status,
+                it.amount
+            )
+        } as? ArrayList<Transaction>) ?: arrayListOf()
+    }
+
+    suspend fun getTransactionInfo(name: String): ArrayList<Transaction> {
+        return (infoTransactionDao.getTransactionInfo(name).map {
+            Transaction(
+                it.accountName,
+                it.companyName,
+                it.summa,
+                it.receivingDate,
+                it.status,
+                it.amount
+            )
+        } as? ArrayList<Transaction>) ?: arrayListOf()
+    }
 }

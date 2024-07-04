@@ -22,7 +22,6 @@ fun TransactionScreen(
 ) {
     var companyName by remember { mutableStateOf("") }
     var transactionNumber by remember { mutableStateOf("") }
-    var receivingDate by remember { mutableStateOf("") }
     var status by remember { mutableStateOf("") }
     var amount by remember { mutableStateOf("") }
 
@@ -47,13 +46,6 @@ fun TransactionScreen(
             onValueChange = { transactionNumber = it }
         )
 
-        ShowTransactionsNames("Date")
-
-        ShowTransactionsField(
-            value = receivingDate,
-            onValueChange = { receivingDate = it }
-        )
-
         ShowTransactionsNames("Transaction status")
 
         ShowTransactionsField(
@@ -74,7 +66,6 @@ fun TransactionScreen(
             viewModel,
             companyName,
             transactionNumber,
-            receivingDate,
             status,
             amount
         )

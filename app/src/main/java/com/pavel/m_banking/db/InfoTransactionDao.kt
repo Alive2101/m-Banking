@@ -13,7 +13,15 @@ interface InfoTransactionDao {
     @Query("SELECT * FROM InfoTransactionEntity")
     suspend fun getAllItem(): List<InfoTransactionEntity>
 
-    @Query("SELECT * FROM InfoTransactionEntity ORDER BY id DESC LIMIT 4")
-    suspend fun getLastFiveTransaction(): List<InfoTransactionEntity>
+    @Query("SELECT * FROM InfoTransactionEntity WHERE accountName = :accountName ORDER BY id DESC LIMIT 5")
+    suspend fun getLastFiveTransactionsByAccountName(accountName: String): List<InfoTransactionEntity>
+
+    @Query("SELECT * FROM InfoTransactionEntity WHERE transactionNumber = :name")
+    suspend fun findValue(name: String): List<InfoTransactionEntity>
+
+    @Query("SELECT * FROM InfoTransactionEntity WHERE accountName = :name ")
+    suspend fun getTransactionInfo(
+        name: String,
+    ): List<InfoTransactionEntity>
 
 }
